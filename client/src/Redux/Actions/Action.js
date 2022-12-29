@@ -14,14 +14,17 @@ export const BEST_FIVE = "BEST_FIVE";
 export function getRecipes() {
     return async function (dispatch) {
       let json = await axios.get("http://localhost:3001/recipes");
+      console.log(json);
       return dispatch({ type: GET_RECIPES, payload: json.data });
     };
-  }
+}
+
 
 
 export function nameSearch(name) {
     return async function (dispatch) {
         let recipes = await axios.get("http://localhost:3001/recipes?name=" + name);
+        console.log(recipes);
         return dispatch({ type: NAME_SEARCH, payload: recipes.data });
     };
 }
@@ -29,6 +32,7 @@ export function nameSearch(name) {
 export function getDiets() {
     return async function (dispatch) {
         let diets = await axios.get("http://localhost:3001/diets");
+        console.log(diets);
         return dispatch({ type: GET_DIETS, payload: diets.data })
     };
 }

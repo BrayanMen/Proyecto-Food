@@ -61,12 +61,13 @@ export default function Home() {
                 pagination = {pagination}
                 />            
                 <div>
-                    {currentRecipes&&currentRecipes.map((r) => {
+                    {currentRecipes&&currentRecipes.map((r, index) => {
                         return (
-                            <div>
+                            <div key={index}>
                                 <Link to={`/recipes/${r.id}`}>
                                     <Card
                                         key={r.id}
+                                        id={r.id}
                                         name={r.name}
                                         image={r.image}
                                         diets={r.diets.map(re => <>{re.name}</>)}
