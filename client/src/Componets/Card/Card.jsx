@@ -8,9 +8,10 @@ export default function Card(image, name, diets, id) {
                 <img src={image} alt="Not Found" />
                 <label>Dietas:</label>
                 <ul>
-                    {diets?.map( d => (
+                    {diets?.map( d => {
+                        return (
                         <li key={d}>{d.name}</li>
-                    ))}
+                    )})}
                 </ul>
         </div>
     )

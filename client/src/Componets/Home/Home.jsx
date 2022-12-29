@@ -9,7 +9,7 @@ export default function Home() {
     const dispatch = useDispatch();
 
     const allRecipes = useSelector((state) => state.recipes);
-    //const allDiets = useSelector((state) => state.diets);
+    //git const allDiets = useSelector((state) => state.diets);
 
     const [currentePage, setCurrentPage] = useState(1);
     const [recipesPerPage, setRecipesPerPage] = useState(9);
