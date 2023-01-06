@@ -1,18 +1,21 @@
 import React from 'react'
+import './Card.css'
 //import { Link } from 'react-router-dom'
 
-export default function Card({image, name, diets, id}) {
+export default function Card({ image, name, diets, health_score }) {
     return (
-        <div>
-                <h3>{name}</h3>
-                <img src={image} alt="Not Found" width="300px" height="300px"/>
-                <label>Dietas:</label>
-                <ul>
-                    {diets?.map( d => {
-                        return (
-                        <li key={d.name}>{JSON.stringify(d.name)}</li>
-                    )})}
-                </ul>
+        <div className='div_card'>
+            <h3>{name}</h3>
+            <p>{health_score}</p>
+            <img src={image} alt="Not Found" width="200px" height="200px" />
+            <ul>
+                <p>Dietas:</p>
+                {diets.map((d, id) => {
+                    return (
+                        <li className='card_li' key={id}>{d}</li>
+                    )
+                })}
+            </ul>
         </div>
     )
 }

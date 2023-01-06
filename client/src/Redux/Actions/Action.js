@@ -6,8 +6,8 @@ export const GET_DIETS = "GET_DIETS";
 export const RECIPE_POST = "RECIPE_POST";
 export const RECIPE_DETAIL = "RECIPE_DETAIL";
 export const DIETS_FILTER = "DIETS_FILTER";
-export const ORDER_NAME = "ORDER_BY_NAME";
-export const ORDER_SCORE = "ORDER_BY_SCORE";
+export const ORDER_NAME = "ORDER_NAME";
+export const ORDER_SCORE = "ORDER_SCORE";
 export const BEST_FIVE = "BEST_FIVE";
 
 
@@ -52,7 +52,30 @@ export function recipeDetails(id) {
 }
 
 export function filterDiets(payload) {
-    return async function () {
-        return { type: DIETS_FILTER, payload }
+    console.log(payload)
+    return  {
+        type: DIETS_FILTER, 
+        payload 
     }
 };
+
+export function orderByName(payload){
+    return {
+        type: ORDER_NAME,
+        payload,
+    };
+};
+
+export function orderByScore(payload){
+    return {
+        type: ORDER_SCORE,
+        payload,
+    };
+};
+
+export function bestFive(payload) {
+    return {
+      type: BEST_FIVE,
+      payload,
+    };
+  };

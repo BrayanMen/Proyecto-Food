@@ -27,7 +27,8 @@ module.exports = (sequelize) => {
       validate: {
         min: 0,
         max: 100,
-      }
+      },
+      allowNull:false,
     },
     step_by_step:{
         type: DataTypes.ARRAY(DataTypes.STRING),

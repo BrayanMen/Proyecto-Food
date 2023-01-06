@@ -1,7 +1,7 @@
 require('dotenv').config();
 const axios = require("axios");
 const { Recipe, Diet } = require("../db");
-const { API_KEY, API_KEY1 } = process.env;
+const { API_KEY, API_KEY1, API_KEY2 } = process.env;
 
 // let diets = [
 //     "gluten free",

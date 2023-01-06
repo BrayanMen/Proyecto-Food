@@ -1,0 +1,21 @@
+.div_card {
+    display: inline-block;
+    max-width: 300px;
+    text-align: center;
+    width: 300px;
+    background-color: rgb(255, 145, 0);
+    border-radius: 8px;
+    margin: 0.3cm;
+    align-content: center;
+}
+
+.card_li {
+    list-style: none;
+    text-align: center;
+    border: 1px solid black;
+    margin: 1px;
+    border-radius: 9999px;
+    justify-items: center;
+    background-color: red;
+
+}

@@ -1,4 +1,5 @@
 import React from 'react'
+import './Pagination.css'
 
 export default function Pagination({recipesPerPage, allRecipes, pagination}) {
 
@@ -8,11 +9,11 @@ export default function Pagination({recipesPerPage, allRecipes, pagination}) {
         pageNumber.push(i)        
     }
   return (
-    <nav>
-        <ul>
+    <nav >
+        <ul className='pagination-ul'>
             {pageNumber?.map(n => { return(
-                <li className='number' key={n}>
-                <button onClick={()=> pagination(n)}>{n}</button>
+                <li className='pagination'  key={n}>
+                <button className='pagination-button' onClick={()=> pagination(n)}>{n}</button>
                 </li>
                 )
             })}
