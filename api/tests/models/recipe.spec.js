@@ -10,7 +10,9 @@ describe('Recipe model', () => {
     beforeEach(() => Recipe.sync({ force: true }));
     describe('name', () => {
       it('should throw an error if name is null', (done) => {
-        Recipe.create({})
+        Recipe.create({
+          
+        })
           .then(() => done(new Error('It requires a valid name')))
           .catch(() => done());
       });

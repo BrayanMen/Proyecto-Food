@@ -1,0 +1,32 @@
+.buttonLan {
+    position: relative;
+    display: flex;
+    top: 12cm;
+    left: 46.4%;
+    right: 50%;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+
+    border: 2px solid #3c662aa4;
+    border-radius: 8px;
+    padding: 5px;
+    background-color: #3c662aa4;
+    }
+    .buttonLan:hover{
+       background-color: #e22925;
+       transition: .3s ease all;
+       text-transform: capitalize;
+
+    }
+
+.vidLand {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 50%;
+    width: 100%; 
+    height: 100%;
+    background: #7ed957;
+
+}

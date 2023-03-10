@@ -2,17 +2,17 @@ import React from 'react'
 import './Card.css'
 //import { Link } from 'react-router-dom'
 
-export default function Card({ image, name, diets, health_score }) {
+export default function Card({ image, name, diet, health_score }) {
     return (
         <div className='div_card'>
-            <h3>{name}</h3>
-            <p>{health_score}</p>
+            <h3 className='title_card'>{name}</h3>
+            <h4> Score: {health_score}</h4>
             <img src={image} alt="Not Found" width="200px" height="200px" />
-            <ul>
+            <ul className='card_ul'>
                 <p>Dietas:</p>
-                {diets.map((d, id) => {
+                {diet.map((diet, id) => {
                     return (
-                        <li className='card_li' key={id}>{d}</li>
+                        <li className='card_li' key={id}>{diet.name}</li>
                     )
                 })}
             </ul>

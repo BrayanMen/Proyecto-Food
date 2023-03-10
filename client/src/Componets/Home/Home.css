@@ -11,3 +11,13 @@
     display: flex;
     flex-direction: row;
 }
+
+.selectHome{
+    border: 2px  solid rgb(255, 255, 255);
+    border-radius: 9999px;
+    
+    background-color: #e22825da;
+    color: white;
+    padding: 1px 1.5rem;
+    margin: 4px;
+}

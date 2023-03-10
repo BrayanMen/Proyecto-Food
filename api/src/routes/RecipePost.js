@@ -7,8 +7,8 @@ router.post('/', async (req, res) => {
         const {
             name,
             summary,
-            health_score,
             image,
+            health_score,
             step_by_step,
             createdInDb,
             diets,
@@ -17,18 +17,18 @@ router.post('/', async (req, res) => {
         const recipeCreate = await Recipe.create({
             name,
             summary,
-            health_score,
             image,
+            health_score,
             step_by_step,
-            createdInDb,
+            createdInDb
         });
 
-        let diet = await Diet.findAll({
+        const diet = await Diet.findAll({
             where: { name: diets }
         });
 
         recipeCreate.addDiet(diet);
-        res.status(200).send(recipeCreate);
+        res.status(200).send('Creada!');
     } catch (error) {
         console.log(error)
     }

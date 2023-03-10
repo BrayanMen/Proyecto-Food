@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import Card from '../Card/Card';
 import Pagination from '../Pagination/Pagination';
 import './Home.css'
+import Navbar from '../Navbar/Navbar';
 
 export default function Home() {
     const dispatch = useDispatch();
@@ -12,11 +13,11 @@ export default function Home() {
     const allRecipes = useSelector((state) => state.recipes);
     const allDiets = useSelector((state) => state.diets);
 
-    const [currentePage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
     const [recipesPerPage, setRecipesPerPage] = useState(9);
     const [change, setChange] = useState(true)
 
-    const lastRecipes = currentePage * recipesPerPage; //Trae 9 recetas
+    const lastRecipes = currentPage * recipesPerPage; //Trae 9 recetas
     const firsRecipe = lastRecipes - recipesPerPage;
 
     const currentRecipes = allRecipes.slice(firsRecipe, lastRecipes);
@@ -36,12 +37,14 @@ export default function Home() {
     }, [dispatch]);
 
 
+
+
     //Handlers
 
-    function handleClick(e) {
+    /*function handleClick(e) {
         e.preventDefault();
         dispatch(getRecipes());
-    }
+    }*/
 
     function handleFilterDiets(e) {
         dispatch(filterDiets(e.target.value));
@@ -49,37 +52,44 @@ export default function Home() {
 
     function handleOrderByScore(e) {
         dispatch(orderByScore(e.target.value));
-        change ? setChange(false) : setChange(true)
+        setCurrentPage(1);
+        change ? setChange(false) : setChange(true);
+        e.preventDefault();
     }
 
     function handleOrderByNames(e) {
         dispatch(orderByName(e.target.value));
-        change ? setChange(false) : setChange(true)
+        change ? setChange(false) : setChange(true);
+        setCurrentPage(1);
+        e.preventDefault();
     }
 
     return (
         <div>
-            <h1>Food API </h1>
-            <Link to='/recipe'>Crear Receta</Link>
-            <button onClick={e => [handleClick(e)]}>Refresh</button>
+            <Navbar />
             <div>
-                <select onChange={(e) => handleOrderByNames(e)}>
-                    <option value='Order Alphabetic' disabled>Orden Alfabetico</option>
-                    <option value='Asc'>A - Z</option>
-                    <option value='Desc'>Z - A</option>
+                <select className='selectHome' defaultValue="default" onChange={(e) => { handleOrderByNames(e) }}>
+                    <option value='Alpha'>Orden Alfabetico</option>
+                    <option key='Asc' value='Asc'>A - Z</option>
+                    <option key='Desc' value='Desc'>Z - A</option>
                 </select>
-                <select onChange={(e) => handleOrderByScore(e)}>
-                    <option value='Score Order' disabled>Orden por Puntaje</option>
-                    <option value='Max'>Max</option>
-                    <option value='Min'>Min</option>
+                <select className='selectHome' defaultValue="default" onChange={(e) => { handleOrderByScore(e) }}>
+                    <option value='Puntaje' >Orden por Puntaje</option>
+                    <option key='Max' value="Max">Max</option>
+                    <option key='Min'value='Min'>Min</option>
                 </select>
-                <select onChange={e => handleFilterDiets(e)}>
-                    <option value='diets' >Dietas</option>
+                <select className='selectHome' defaultValue="default" onChange={e => handleFilterDiets(e)}>
+                    <option value='Dietas'>Dietas</option>
                     {allDiets?.map((diet) => {
                         return (<option value={diet.name} key={diet.id}>{diet.name}</option>)
                     })
                     }
                 </select>
+                <Pagination recipesPerPage={recipesPerPage}
+                    allRecipes={allRecipes?.length}
+                    pagination={pagination}
+                    currentPage={currentPage}
+                />
                 <div className='cardDiv'>
                     {currentRecipes && currentRecipes.map((r, index) => {
                         return (
@@ -89,8 +99,8 @@ export default function Home() {
                                         id={r.id}
                                         name={r.name}
                                         image={r.image}
-                                        diets={r.diets}
-                                        score={r.health_score}
+                                        diet={r.diets}
+                                        health_score={r.health_score}
                                         key={r.id}
                                     />
                                 </Link>
@@ -98,10 +108,11 @@ export default function Home() {
                         );
                     })}
                 </div>
-                    <Pagination recipesPerPage={recipesPerPage}
-                        allRecipes={allRecipes.length}
-                        pagination={pagination}
-                    />
+                <Pagination recipesPerPage={recipesPerPage}
+                    allRecipes={allRecipes.length}
+                    pagination={pagination}
+                    currentPage={currentPage}
+                />
             </div>
         </div>
     )

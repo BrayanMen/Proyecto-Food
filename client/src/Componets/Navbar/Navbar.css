@@ -1,0 +1,45 @@
+.ulNav {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    background-color: #7ed957;
+    border: #73d957b0 1px solid;
+    margin-top: 0%;
+    margin: 4px;
+    border-radius: 999px;
+    background: #7ed957;
+}
+
+.liNav {
+    list-style: none;
+    margin-left: 5cm;
+    margin-right: 5cm;
+
+}
+
+.liButtom1 {
+    list-style: none;
+}
+
+.liButtom2 {
+    list-style: none;
+    border: none;
+    border-radius: 9999px;
+    border-color: transparent;
+    background-color: #E22925;;
+    color: white;
+    padding: 10px 1.5rem;
+}
+
+.vid {
+    gap: 20%;
+    height: 80px;
+    width: 80px;
+}
+
+.vidDiv {
+    background-color: #73d957;
+
+}
